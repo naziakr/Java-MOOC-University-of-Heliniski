@@ -8,13 +8,13 @@ public class DifferentTypesOfInput {
 
         // Write your program here
         System.out.println("Give a string:");
-        String value = scanner.nextLine();
+        String value = scan.nextLine();
         System.out.println("Give an integer:");
-        int number = Integer.valueOf(scanner.nextLine());
+        int number = Integer.valueOf(scan.nextLine());
         System.out.println("Give a double:");
-        double floating = Double.valueOf(scanner.nextLine());
+        double floating = Double.valueOf(scan.nextLine());
         System.out.println("Give a boolean:");
-        boolean bool = Boolean.valueOf(scanner.nextLine());
+        boolean bool = Boolean.valueOf(scan.nextLine());
         System.out.println("You gave the string "+value);
         System.out.println("You gave the integer "+ number);
         System.out.println("You gave the double "+ floating);
