@@ -3,6 +3,7 @@
 University of Helsinki’s free massive open online course (MOOC) on programming! This is an updated version of our popular course Object-Oriented Programming with Java.
 
 PART 1
+
 2. Programming exercise: Sandbox
 1. Programming exercise: Ada Lovelace
 2. Programming exercise: Once Upon a Time
