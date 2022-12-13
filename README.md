@@ -41,3 +41,42 @@ PART 1
 12. Programming exercise: Checking the age
 13. Programming exercise: Leap year
 14. Programming exercise: Gift tax
+
+
+PART 2
+ 
+2. Programming exercise: Squared
+3. Programming exercise: Square root of sum
+5. Programming exercise: Absolute Value
+6. Programming exercise: Comparing Numbers
+2. Repeating functionality
+1. Programming exercise: Carry on?
+2. Programming exercise: Are we there yet?
+4. Programming exercise: Only positives
+5. Programming exercise: Number of Numbers
+6. Programming exercise: Number of negative numbers
+7. Programming exercise: Sum of Numbers
+8. Programming exercise: Number and sum of numbers
+9. Programming exercise: Average of numbers
+10. Programming exercise: Average of positive numbers
+2. Programming exercise: Counting
+3. Programming exercise: Counting to hundred
+4. Programming exercise: From where to where? (2 parts)
+5. Programming exercise: Sum of a sequence
+6. Programming exercise: Sum of a sequence - the sequel
+7. Programming exercise: Factorial
+8. Programming exercise: Repeating, breaking and remembering (5 parts)
+1. Programming exercise: In a hole in the ground
+2. Programming exercise: Reprint
+4. Programming exercise: From one to parameter
+5. Programming exercise: From parameter to one
+6. Programming exercise: Division
+7. Programming exercise: Divisible by three
+9. Programming exercise: Number uno
+10. Programming exercise: Word
+13. Programming exercise: Summation
+14. Programming exercise: Smallest
+15. Programming exercise: Greatest
+16. Programming exercise: Averaging
+17. Programming exercise: Star sign (4 parts)
+18. Programming exercise: Advanced astrology (3 parts)
