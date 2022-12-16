@@ -80,3 +80,38 @@ PART 2
 16. Programming exercise: Averaging
 17. Programming exercise: Star sign (4 parts)
 18. Programming exercise: Advanced astrology (3 parts)
+
+PART 3
+
+1. Programming exercise: Third element
+2. Programming exercise: Second plus third
+3. Programming exercise: IndexOutOfBoundsException
+5. Programming exercise: List size
+6. Programming exercise: Last in list
+7. Programming exercise: First and last
+8. Programming exercise: Remember these numbers
+9. Programming exercise: Only these numbers
+10. Programming exercise: Greatest in list
+11. Programming exercise: Index of
+12. Programming exercise: Index of smallest
+13. Programming exercise: Sum of a list
+14. Programming exercise: Average of a list
+17. Programming exercise: On the list?
+18. Programming exercise: Print in range
+19. Programming exercise: Sum
+20. Programming exercise: Remove last
+2. Programming exercise: Swap
+3. Programming exercise: Index was not found
+4. Programming exercise: Sum of array
+5. Programming exercise: Print neatly
+6. Programming exercise: Print in stars
+1. Programming exercise: Print thrice
+2. Programming exercise: Is it true
+3. Programming exercise: Login
+4. Programming exercise: Line by line
+5. Programming exercise: AV Club
+6. Programming exercise: First words
+7. Programming exercise: LastWords
+8. Programming exercise: Age of the oldest
+9. Programming exercise: Name of the oldest
+10. Programming exercise: Personal details
