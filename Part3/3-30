@@ -1,0 +1,30 @@
+# Write a program that reads names and ages from the user until an empty line is entered. The name and age are separated by a comma.
+
+After reading all user input, the program prints the age of the oldest person. 
+You can assume that the user enters at least one person, and that one of the users is older than the others.
+
+
+
+import java.util.Scanner;
+
+public class AgeOfTheOldest {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        int greatest = 0;
+        while (!input.isEmpty()) {
+            String[] arr = input.split(",");
+            for (int i = 1; i < arr.length; i = i + 2) {
+                if (Integer.parseInt(arr[i]) > greatest) {
+                    greatest = Integer.parseInt(arr[i]);
+                }
+            }
+
+            input = scanner.nextLine();
+        }
+
+        System.out.println(greatest);
+
+    }
+}
