@@ -1,0 +1,49 @@
+# First, create the PaymentCard object's constructor, which is passed the opening balance of the card, and which then stores that balance in the object's 
+internal variable. 
+Then, write the toString method, which will return the card's balance in the form "The card has a balance of X euros".
+
+The method eatAffordably should reduce the card's balance by € 2.60, and the method eatHeartily should reduce the card's balance by € 4.60.
+
+Change the methods eatAffordably and eatHeartily so that they don't reduce the balance should it turn negative.
+The purpose of the method is to increase the card's balance by the amount of money given as a parameter. 
+However, the card's balance may not exceed 150 euros. 
+As such, if the amount to be topped up exceeds this limit, the balance should, in any case, become exactly 150 euros.
+
+
+public class PaymentCard {
+    private double balance;
+
+    public PaymentCard(double openingBalance) {
+        this.balance = openingBalance;
+    }
+
+    public String toString() {
+        return "The card has a balance of "+this.balance+" euros";
+    }
+    public void eatAffordably() {
+        if (this.balance > 2.60){
+            this.balance = this.balance-2.60;
+        } 
+   
+    }
+
+    public void eatHeartily() {
+        if (this.balance > 4.60){
+        this.balance = this.balance-4.60;
+        } 
+    
+    }
+    
+    public void addMoney(double amount){
+        if (amount>0){
+            if (this.balance+amount>100.0){
+                this.balance = 150.0;
+            } else{
+                this.balance = this.balance+amount;
+            }
+        }
+    }
+
+}
+    
+
