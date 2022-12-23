@@ -1,0 +1,98 @@
+Add to the class Person the method public boolean equals (Object compared), which can be used to compare the similarity of people. 
+The comparison should take into account the equality of all the variables of a person (birthday included).
+
+
+
+public class SimpleDate {
+
+    private int day;
+    private int month;
+    private int year;
+
+    public SimpleDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    public int getDay() {
+        return this.day;
+    }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public int getYear() {
+        return this.year;
+    }
+
+    public boolean equals(Object compared) {
+        // if the variables are located in the same place, they are the same.
+        if (this == compared) {
+            return true;
+        }
+
+        // if the object is not instance of SimpleDate, the objects are not the same
+        if (!(compared instanceof SimpleDate)) {
+            return false;
+        }
+
+        // let's cast the object to SimpleDate
+        SimpleDate otherDate = (SimpleDate) compared;
+
+        // if the object's values are the same, the objects are the same
+        if (this.day == otherDate.day
+                && this.month == otherDate.month
+                && this.year == otherDate.year) {
+            return true;
+        }
+
+        // other wise, the objects are not the same
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return this.day + "." + this.month + "." + this.year;
+    }
+}
+
+
+import java.util.Objects;
+
+public class Person {
+
+    private String name;
+    private SimpleDate birthday;
+    private int height;
+    private int weight;
+
+    public Person(String name, SimpleDate birthday, int height, int weight) {
+        this.name = name;
+        this.birthday = birthday;
+        this.height = height;
+        this.weight = weight;
+    }
+
+    // implement an equals method here for checking the equality of objects
+    public boolean equals (Object compared){
+        if (this == compared){
+            return true;
+            
+        }
+        if (!(compared instanceof Person)) {
+            return false;
+        }
+        Person comparedPerson = (Person) compared;
+        
+        if (this.name.equals(comparedPerson.name) &&
+                this.birthday.equals(comparedPerson.birthday) &&
+                this.height == comparedPerson.height &&
+                this.weight == comparedPerson.weight){
+            return true;
+        }
+        return false;
+        
+    }
+}
