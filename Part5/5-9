@@ -1,0 +1,34 @@
+The method receives a person as a parameter, and it is meant to return to its caller the weight of that person.
+The weight information can be found by calling a suitable method of the person person. So your task is to complete the code of the method!
+
+
+
+Feeding
+Write a method called public void feed(Person person) for the health station. It should increase the weight of the parameter person by one.
+
+
+Counting weighings
+Create a new method called public int weighings() for the health station. It should tell how many weighings the health station has performed. 
+
+
+public class HealthStation {
+    
+    private int counter;
+
+
+    public int weigh(Person person) {
+        // return the weight of the person passed as the parameter
+        counter++;
+        return person.getWeight();
+        
+    }
+    public void feed(Person person){
+        person.setWeight(person.getWeight()+1);
+    }
+    
+    public int weighings(){
+        return counter;
+        
+    }
+
+}
