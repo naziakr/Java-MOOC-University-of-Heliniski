@@ -125,8 +125,6 @@ PART 5
 2. Removing repetitive code (overloading methods and constructors)
 2. Programming exercise: Constructor Overload
 4. Programming exercise: Overloaded Counter (2 parts)
-3. Primitive and reference variables
-4. Objects and references
 1. Programming exercise: NullPointerException
 2. Programming exercise: Health station (3 parts)
 3. Programming exercise: Card payments (4 sections)
@@ -138,3 +136,19 @@ PART 5
 9. Programming exercise: Archive (2 parts)
 10. Programming exercise: Dating app (3 parts)
 11. Programming exercise: Money (3 parts)
+
+PART 6
+
+1. Programming exercise: Menu (3 parts)
+2. Programming exercise: Stack (2 parts)
+3. Programming exercise: MessagingService
+4. Programming exercise: Printing a Collection
+5. Programming exercise: Santa's Workshop (2 parts)
+6. Programming exercise: Longest in collection
+7. Programming exercise: Height Order (3 parts)
+8. Programming exercise: Cargo hold (7 parts)
+1. Programming exercise: Simple Dictionary (4 parts)
+2. Programming exercise: To do list (2 parts)
+3. Programming exercise: Averages (3 parts)
+4. Programming exercise: Joke Manager (2 parts)
+1. Programming exercise: Exercises (2 parts)
