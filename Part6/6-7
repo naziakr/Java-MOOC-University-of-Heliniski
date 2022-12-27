@@ -1,0 +1,67 @@
+Create Room class. The class should contain a list of persons as an instance variable, and it should have a parameterless constructor. 
+In addition, add the following methods to the class:
+
+public void add(Person person) - add the person passed as a paramter to the list.
+public boolean isEmpty() - returns a boolean-type value true or false, that tells whether the room is empty or not.
+public ArrayList<Person> getPersons() - returns a list of the persons in the room.
+
+Shortest person
+Add a public Person shortest() method to the Room class, which returns the shortest person added to the room. 
+If the room is empty, a null reference is returned. The method should not remove a person from the room.
+
+Taking from a room
+Add a public Person take() method to the Room class, which takes the shortest person in the room. When a room is empty, it returns a null reference.
+
+It's now possible to print the persons in height order.
+
+import java.util.ArrayList;
+
+public class Room {
+
+    private ArrayList<Person> room;
+
+    public Room () {
+        this.room = new ArrayList<>();
+    }
+
+    public void add (Person person) {
+        this.room.add(person);
+    }
+
+    public boolean isEmpty() {
+        if (this.room.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ArrayList<Person> getPersons () {
+        return this.room;
+    }
+
+    public Person shortest () {
+        if(this.room.isEmpty()) {
+            return null;
+        }
+
+        Person shortestPerson = room.get(0);
+        for (Person person : room) {
+            if (person.getHeight() < toReturn.getHeight()) {
+                shortestPerson = person;
+            }
+        }
+        return shortestPerson;
+    }
+
+    public Person take () {
+        if (this.room.isEmpty()) {
+            return null;
+        }
+        Person shortest = shortest();
+
+        this.room.remove(shortest);
+
+        return shortest;
+    }
+}
