@@ -1,0 +1,108 @@
+Implement the class TextUI that receives as constructor parameters a Scanner and SimpleDictionary objects. Then give the class a method called public void start().
+The method should work as follows:
+
+The method asks the user for a command
+If the command is end, the UI prints the string "Bye bye!" and the execution of the start method ends.
+Otherwise the text UI prints the message Unknown command and asks for a new command, so it loops back to step 1.
+
+
+Adding a translation
+Modify the method public void start() so that it works in the following way:
+
+The method asks the user for a command.
+If the command is end, the UI prints the string "Bye bye!" and the execution of the start method ends.
+If the command is add, the text UI asks the user for a word and a translation, each on its own line. 
+After this the words are stored in the dictionary, and the method continues by asking for a new command (loops back to stage 1).
+Otherwise the text UI prints the message Unknown command and asks for a new command, so it loops back to step 1.
+
+
+In the example above, we added the word "pike" and its translation "hauki" to the SimpleDictionary object. 
+After exiting the text user interface the dictionary could be used in the following manner:
+
+Scanner scanner = new Scanner(System.in);
+SimpleDictionary dictionary = new SimpleDictionary();
+
+TextUI textUI = new TextUI(scanner, dictionary);
+textUI.start();
+System.out.println(dictionary.translate("pike")); // prints the string "hauki"
+Translating a word
+Modify the method public void start() so that it works in the following:
+
+The method asks the user for a command.
+If the command is end, the UI prints the string "Bye bye!" and the execution of the start method ends.
+If the command is add, the text UI asks the user for a word and a translation, each on its own line.
+After this the words are stored in the dictionary, and the method continues by asking for a new command (loops back to stage 1).
+If the command is search, the text UI asks the user for the word to be translated. 
+After this it prints the translation of the word, and the method continues by asking for a new command (loops back to stage 1).
+Otherwise the text UI prints the message Unknown command and asks for a new command, so it loops back to step 1.
+
+
+Cleaning up the translation
+Modify the searching functionality of the UI so that if the word isn't found (i.e. the dictionary returns null), 
+the UI prints the message "Word (searched word) was not found".
+
+
+
+import java.util.HashMap;
+
+public class SimpleDictionary {
+
+    private HashMap<String, String> translations;
+
+    public SimpleDictionary() {
+        this.translations = new HashMap<>();
+    }
+
+    public String translate(String word) {
+        return this.translations.get(word);
+    }
+
+    public void add(String word, String translation) {
+        this.translations.put(word, translation);
+    }
+}
+import java.util.Scanner;
+public class TextUI {
+    private Scanner scanner;
+    private SimpleDictionary simpleDictionary;
+    
+    public TextUI(Scanner scanner, SimpleDictionary simpleDictionary){
+        this.scanner = scanner;
+        this.simpleDictionary = simpleDictionary;
+    }
+    
+    public void start(){
+        while (true){
+            System.out.println("Command: ");
+            String input = scanner.nextLine();
+            if (input.equals("end")){
+                System.out.println("Bye bye!");
+                break;
+            } else if (input.equals("add")){
+                System.out.println("Word: ");
+                String word = scanner.nextLine();
+                System.out.println("Translation: ");
+                String translation = scanner.nextLine();
+                simpleDictionary.add(word, translation);
+                continue;
+            } else if (input.equals("search")){
+                System.out.println("To be translated: ");
+                String toBeTranslated = scanner.nextLine();
+               
+                String translation = simpleDictionary.translate(toBeTranslated);
+                if (translation == null){
+                    System.out.println("Word "+ toBeTranslated+ " was not found");
+                } else{
+                    System.out.println("Translation: ");
+                    System.out.println(translation);
+                }
+                continue;
+            } else {
+                System.out.println("Unknown command");
+            }
+        }
+        System.out.println("Bye bye!");
+    }
+}
+
+
