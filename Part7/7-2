@@ -1,0 +1,98 @@
+This time we'll create a class "Container", which is responsible for managing the contents of a container.
+
+Container
+Make a class called Container. 
+The class must have a constructor which does not take any parameters, and the following methods:
+
+public int contains() which returns the amount of liquid in a container as an integer.
+public void add(int amount) which adds the amount of liquid given as a parameter to the container. 
+If the amount is negative, no liquid is added. A container can hold a maximum of 100 units of liquid.
+public void remove(int amount) which removes the amount of liquid given as a parameter from the container.
+If the amount is negative, no liquid is removed. A container can never hold less than 0 units of liquid.
+public String toString() which returns the container as a string formatted "amount of liquid/100, for example "32/100".
+
+
+
+Functionality
+Copy the user interface you implemented for the previous example, and modify it to use the new Container class. 
+The main method in the class LiquidContainers2 must start the program.
+
+
+import java.util.Scanner;
+
+public class LiquidContainers2 {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        final Container firstCont = new Container();
+        final Container secondCont = new Container();
+
+        while (true) {
+            System.out.println("First: " + firstCont);
+            System.out.println("Second: " + secondCont);
+
+            String input = scan.nextLine();
+            if (input.equals("quit")) {
+                break;
+            }
+
+            final String[] parts = input.split(" ");
+            final String command = parts[0];
+            final int amount = Integer.parseInt(parts[1]);
+
+            if (command.equalsIgnoreCase("add")) {
+                firstCont.add(amount);
+            }
+
+            if (command.equalsIgnoreCase("move")) {
+                secondCont.add(Math.min(firstCont.contains(), amount));
+                firstCont.remove(amount);
+            }
+
+            if (command.equalsIgnoreCase("remove")) {
+                secondCont.remove(amount);
+            }
+        }
+    }
+
+}
+
+
+public class Container {
+    private int amountSpecified;
+    
+    public Container(){
+        
+    }
+    public int contains(){
+        return amountSpecified;
+    }
+    
+    public void add(int amount){
+        if (amount > 0) {
+            this.amountSpecified += amount;
+        }
+
+        if (this.amountSpecified > 100) {
+            this.amountSpecified = 100;
+        }
+    }
+    
+     public void remove(int amount) {
+        if (amount > 0) {
+            this.amountSpecified  -= amount;
+        }
+        if (this.amountSpecified  < 0) {
+            amountSpecified  = 0;
+        }
+    }
+
+    public String toString () {
+        return this.amountSpecified  + "/100";
+    }
+}
+    
+
+    
+
