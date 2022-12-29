@@ -151,4 +151,4 @@ PART 6
 2. Programming exercise: To do list (2 parts)
 3. Programming exercise: Averages (3 parts)
 4. Programming exercise: Joke Manager (2 parts)
-1. Programming exercise: Exercises (2 parts)
+
