@@ -50,16 +50,16 @@ public class UserInterface {
     }
     
     public void start () {
-        while (true) {
+        while (true){
             System.out.print("Command: ");
-            String command = scaneer.nextLine();
+            String command = scanner.nextLine();
 
             if (command.equals("stop")) {
                 break;
             }
             else if (command.equals("add")) {
                      System.out.print("Task: ");
-                     String task = scaneer.nextLine();
+                     String task = scanner.nextLine();
                      todoList.add(task);
             }
             else if (command.equals("list")) {
@@ -67,7 +67,7 @@ public class UserInterface {
             }
             else if (command.equals("remove")) {
                      System.out.println("Which one is removed? ");
-                     int number = Integer.parseInt(scaneer.nextLine());
+                     int number = Integer.parseInt(scanner.nextLine());
                      todoList.remove(number);
             }
         }
