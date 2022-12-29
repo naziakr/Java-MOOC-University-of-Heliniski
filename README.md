@@ -152,3 +152,16 @@ PART 6
 3. Programming exercise: Averages (3 parts)
 4. Programming exercise: Joke Manager (2 parts)
 
+PART 7
+
+1. Programming paradigms
+1. Programming exercise: Liquid containers (3 parts)
+2. Programming exercise: Liquid Containers 2.0 (2 parts)
+1. Programming exercise: Sorting (5 parts)
+2. Programming exercise: Ready-made Sorting Algorithms
+3. Programming exercise: Searching
+1. Programming exercise: Grade statistics (4 parts)
+2. Programming exercise: Recipe search (4 parts)
+3. Programming exercise: Big year (3 parts)
+
+
