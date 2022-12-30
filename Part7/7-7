@@ -1,0 +1,182 @@
+In this exercise we are going to create a program that allows for searching for recipes based on their name, cooking time, or the name of an ingredient. 
+The program should read the recipes from a file that the user provides. 
+It might be a good idea to brush up on reading information from files (part 4) before beginning
+
+Each recipe consists of three or more rows in a recipe file. The first row is for the name of the recipe, the second the cooking time (an integer), 
+and the third and possibly following rows list the ingredients used in the recipe. An empty row follows the last ingredient row. 
+There can be many recipes in a single file. Below, an example file containing recipes is described.
+
+
+
+The program will be implemented in parts. First we'll create the possibility to read and list recipes.
+After that we'll add the functionality to search for recipes based on their name, cooking time, or the name of an ingredient.
+
+There is a file called recipes.txt supplied with the exercise base. You can use it for testing purposes.
+Notice that the program should not list the ingredients of the recipes, but they will be used in the search functionality.
+
+Reading and listing recipes
+First create the functionality to read and list recipes. The user interface of the program is described below. 
+You may assume that the user only enters files that exist. B
+
+Finding recipes by name
+Make it possible to find recipes by their names. Finding by name is done with the command find name, after which the user is asked for the name that is used to search. 
+The search should print all the recipes whose names contain the string given by the user.
+
+
+
+
+Searching for recipes by cooking time
+Next, implement the possibility to find recipes based on their cooking time. 
+This is done with the command find cooking time, after which the user is asked for the longest acceptable cooking time. 
+The program should react by printing all the recipes whose cooking times don't exceed the cooking time given by the user (so equal or less time).
+
+
+import java.util.ArrayList;
+
+public class Recipe {
+    private String name;
+    private ArrayList<String> ingredientList;
+    private int cookingTime;
+
+    public Recipe(String name, ArrayList<String> ingredientList, int cookingTime) {
+        this.name=name;
+        this.ingredientList = ingredientList;
+        this.cookingTime = cookingTime;
+    }
+
+    public boolean nameContains(String name) {
+        if (this.name.contains(name)) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getCookingTime() {
+        return cookingTime;
+    }
+
+    public boolean ingredientListContains(String ingredient) {
+        if (this.ingredientList.contains(ingredient)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", cooking time: " + this.cookingTime;
+    }
+}
+
+import java.util.ArrayList;
+
+public class RecipeList {
+    private ArrayList<Recipe> recipes;
+
+    public RecipeList() {
+        this.recipes = new ArrayList<>();
+    }
+    public void add(Recipe recipe) {
+        this.recipes.add(recipe);
+    }
+
+    public void find(String name) {
+        for (Recipe recipe : recipes ) {
+            if (recipe.nameContains(name)) {
+                System.out.println(recipe);
+            }
+        }
+    }
+
+    public void searchCookingTimes(int time) {
+        for (Recipe recipe : recipes) {
+            if (recipe.getCookingTime() <= time ) {
+                System.out.println(recipe);
+            }
+        }
+    }
+
+    public void searchIngredients(String ingredient) {
+        for (Recipe recipe : recipes) {
+            if (recipe.ingredientListContains(ingredient)) {
+                System.out.println(recipe);
+            }
+        }
+    }
+    public void print() {
+        for (Recipe recipe : recipes ) {
+            System.out.println(recipe);
+        }
+    }
+}
+
+
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RecipeSearch {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        RecipeList recipeList = new RecipeList();
+
+        System.out.print("File to read: ");
+        String fileName = scanner.nextLine();
+
+        // we create a scanner for reading the file
+        try (Scanner fileScan = new Scanner(Paths.get(fileName))) {
+            System.out.println("Commands: ");
+            System.out.println("list - lists the recipes\n" +
+                    "stop - stops the program\n" +
+                    "find name - searches recipes by name\n" +
+                    "find cooking time - searches recipes by cooking time\n" +
+                    "find ingredient - searches recipes by ingredient");
+            System.out.print("Enter command: ");
+            String command = scanner.nextLine();
+
+            // we read the file until all lines have been read
+            while (fileScan.hasNextLine()) {
+                // we read one line
+                String name = fileScan.nextLine();
+                int cookingTime = Integer.valueOf(fileScan.nextLine());
+                ArrayList<String> ingredientList = new ArrayList<>();
+
+                String ingredient = fileScan.nextLine();
+                while (fileScan.hasNextLine()) {
+                    if (ingredient.isEmpty()) {
+                        break;
+                    }
+
+                    ingredientList.add(ingredient);
+                    ingredient = fileScan.nextLine();
+                }
+
+                Recipe recipe = new Recipe(name, ingredientList, cookingTime);
+                recipeList.add(recipe);
+            }
+
+            if (command.equals("list")) {
+                recipeList.print();
+            } else if (command.equals("stop")) {
+                return;
+            } else if (command.equals("find name")) {
+                System.out.print("Searched word: ");
+                String search = scanner.nextLine();
+                recipeList.find(search);
+            } else if (command.equals("find cooking time")) {
+                System.out.print("Max cooking time: ");
+                int maxTime = Integer.valueOf(scanner.nextLine());
+                recipeList.searchCookingTimes(maxTime);
+            } else if (command.equals(("find ingredient"))) {
+                System.out.print("Ingredient: ");
+                String ingredient = scanner.nextLine();
+                recipeList.searchIngredients(ingredient);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+}
