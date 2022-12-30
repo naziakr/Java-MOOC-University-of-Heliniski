@@ -1,0 +1,159 @@
+In this exercise we create a program for printing statistics for points in course. 
+The program receives points (integers from zero to one hundred) as input, based on which it prints statistics about grades. Reading of input stops when the user enters the number -1. Numbers that are not within the interval [0-100] should not be taken into account when calculating the statistics.
+
+A string read from the user can be converted to an integer using the Integer class' method valueOf. 
+
+Point averages
+Write a program that reads integers representing course point totals from the user. 
+Numbers between [0-100] are acceptable and the number -1 ends the reading of input. Other numbers are erroneous input, which should be ignored.
+When the user enters the number -1, the program should print the average of the point totals that were input.
+
+
+Point average for points giving a passing grade
+Extend the program, such that it in addition to giving the point average of all totals also provides the point average for points giving a passing grade.
+
+A passing grade is achieved by getting a minimum of 50 course points. You may assume that the user always provides at least one integer between [0-100]. 
+If there are no numbers giving a passing grade, the program should print a line "-" where the average would be.
+
+
+Each point total is converted to a grade based on the above table. If a point total isn't within [0-100], it should be ignored.
+
+The grade distribution is printed out as stars. E.g. if there is one point total giving the grade 5, then it should print the row 5: *.
+If there are no point totals giving a particular grade, then no stars should be printed for it. In the sample below this is true for e.g. the grade 4.
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Points points = new Points();
+        System.out.println("Enter point totals, -1 stops: ");
+
+        while (true) {
+            int point = Integer.parseInt(scanner.nextLine());
+
+            if (point == -1) {
+                break;
+            }
+
+            points.add(point);
+        }
+        System.out.println("Point average (all): " + points.average());
+        double passingAverage = points.averagePassing();
+        if (passingAverage == 0.0) {
+            System.out.println("Point average (passing): -");
+        } else {
+            System.out.println("Point average (passing): " + passingAverage);
+        }
+        System.out.println("Pass percentage: " + points.passingPercentage());
+        System.out.println("Grade distribution:");
+        points.gradeDistribution();
+    }
+}
+
+import java.util.ArrayList;
+
+public class Points {
+
+    ArrayList<Integer> points;
+    ArrayList<Integer> passingPoints;
+
+    public Points () {
+        this.points = new ArrayList<>();
+        this.passingPoints = new ArrayList<>();
+    }
+
+    public void add (int number) {
+        if (number >=0 && number <= 100) {
+            this.points.add(number);
+        }
+        if (number >=50 && number <= 100) {
+            this.passingPoints.add(number);
+        }
+    }
+
+    public double average () {
+        int sum = 0;
+        for (int point : points) {
+            sum += point;
+        }
+        return (double) sum / this.points.size();
+    }
+
+    public double averagePassing () {
+        int sum = 0;
+        for (int point : passingPoints) {
+            sum += point;
+        }
+
+        if (sum == 0) {
+            return 0.0;
+        }
+
+        return (double) sum / this.passingPoints.size();
+    }
+
+    public double passingPercentage () {
+
+        int passing = this.passingPoints.size();
+        int participants = this.points.size();
+
+        if (participants == 0) {
+            return 0.0;
+        }
+        return (double) 100*passing/participants;
+    }
+
+    public int gradeCount(int lower, int upper) {
+        int count = 0;
+        for (int grade : points) {
+            if (grade >= lower && grade < upper) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public void gradeDistribution() {
+        int start = 5;
+        while (start >= 0) {
+            if (start == 5) {
+                int count = this.gradeCount(90, 101);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            } else if (start == 4) {
+                int count = this.gradeCount(80, 90);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            } else if (start == 3) {
+                int count = this.gradeCount(70, 80);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            } else if (start == 2) {
+                int count = this.gradeCount(60, 70);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            } else if (start == 1) {
+                int count = this.gradeCount(50, 60);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            } else {
+                int count = this.gradeCount(0, 50);
+                System.out.print(start + ": ");
+                this.printGradeDistribution(count);
+            }
+            start -= 1;
+            System.out.println("");
+        }
+    }
+
+    public void printGradeDistribution(int repeat) {
+        for (int i=0; i<repeat; i++) {
+            System.out.print("*");
+        }
+    }
+}
